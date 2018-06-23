@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FFC0CB</color>
+    <color name="Vinho">#b53f41</color>
+    <color name="Vinhoescuro">#8f191b</color>
+    <color name="vinho">#c70000</color>
+    <color name="azul">#496fad</color>
+    <color name="vinhoHint">#eab1b1</color>
+</resources>
