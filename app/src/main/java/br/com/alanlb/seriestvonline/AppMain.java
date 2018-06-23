@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,10 +18,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.zip.Inflater;
 
 public class AppMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,7 +44,10 @@ public class AppMain extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         replaceFragment(R.layout.content_app_main);
-        GridView gv = (GridView) findViewById(R.id.gvcontent);
+
+
+
+        //text.setText("Olá");
         int[] lista = new int[]{R.drawable.comediaicon};
         //gv.setAdapter(new GridViewAdapter(this, lista));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
