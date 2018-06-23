@@ -2,6 +2,7 @@ package br.com.alanlb.seriestvonline;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -23,6 +24,10 @@ import android.widget.TableRow;
 import android.widget.Toast;
 import android.widget.VideoView;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class AppMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,16 +39,9 @@ public class AppMain extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         replaceFragment(R.layout.content_app_main);
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        //                .setAction("Action", null).show();
-        //    }
-        //});
-        //asd
-
+        GridView gv = (GridView) findViewById(R.id.gvcontent);
+        int[] lista = new int[]{R.drawable.comediaicon};
+        //gv.setAdapter(new GridViewAdapter(this, lista));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -53,7 +51,7 @@ public class AppMain extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //pegaVideos();
+
     }
 
     @Override
