@@ -1,4 +1,4 @@
-package br.com.alanlb.seriestvonline;
+package br.com.alanlb.seriestvonline.controller;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import br.com.alanlb.seriestvonline.R;
 
 public class CadastroActivity extends AppCompatActivity {
 

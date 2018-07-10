@@ -1,9 +1,8 @@
-package br.com.alanlb.seriestvonline;
+package br.com.alanlb.seriestvonline.controller;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -35,10 +34,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.alanlb.seriestvonline.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 

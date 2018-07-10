@@ -1,49 +1,39 @@
-package br.com.alanlb.seriestvonline;
+package br.com.alanlb.seriestvonline.controller;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.MediaController;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.zip.Inflater;
+
+import br.com.alanlb.seriestvonline.model.Item;
+import br.com.alanlb.seriestvonline.view.PrincipalFragment;
+import br.com.alanlb.seriestvonline.R;
 
 public class AppMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private FragmentManager fm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        replaceFragment(R.layout.content_app_main);
+        fm = getSupportFragmentManager();
+        if (savedInstanceState == null){
+            PrincipalFragment principalFragment = new PrincipalFragment();
+            replaceFragment(principalFragment,"principalFragment");
+        }
+
 
 
 
@@ -101,13 +91,26 @@ public class AppMain extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_lancamentos) {
-
+            PrincipalFragment pf = (PrincipalFragment)fm.findFragmentByTag("principalFragment");
+            pf.alteraTitulo("Lançamentos");
+            ArrayList<Item> itens = new ArrayList<Item>();
+            itens.add(new Item("Liga da justiça","http://www.planocritico.com/wp-content/uploads/2017/11/lista_DC_Comics_filmes_live_action_plano_critico-600x400.jpg"));
+            itens.add(new Item("Dois Homens e Meio","https://http2.mlstatic.com/dois-homens-e-meio-two-and-a-half-men-9-temporadas-D_NQ_NP_778293-MLB26912791593_022018-F.jpg"));
+            //itens.add(new Item("how i met your mother","https://image.tmdb.org/t/p/w600_and_h900_bestv2/sidx8cEiYG1ZBwzyF5wiXFaBm6Q.jpg"));
+            //itens.add(new Item("Game of Thrones","https://cabanadoleitor.com.br/wp-content/uploads/2017/10/conquest-game-of-thrones-.jpg"));
+            //itens.add(new Item("The Walking Dead","https://pbs.twimg.com/profile_images/1014984923118108672/e7JhBbd0_400x400.jpg"));
+            //itens.add(new Item("Vikings","https://ambrosia.com.br/wp-content/uploads/2014/05/Vikings-History-Channel-segunda-temporada.jpg"));
+            ListaAdapterItem adapter = new ListaAdapterItem(this,itens);
+            pf.adcionaVideos(adapter);
         } else if (id == R.id.nav_comedia) {
-
+            PrincipalFragment pf = (PrincipalFragment)fm.findFragmentByTag("principalFragment");
+            pf.alteraTitulo("Comédia");
         } else if (id == R.id.nav_acao) {
-
+            PrincipalFragment pf = (PrincipalFragment)fm.findFragmentByTag("principalFragment");
+            pf.alteraTitulo("Ação");
         } else if (id == R.id.nav_fcientifica) {
-
+            PrincipalFragment pf = (PrincipalFragment)fm.findFragmentByTag("principalFragment");
+            pf.alteraTitulo("Ficção Científica");
         } else if (id == R.id.nav_share) {
 
         }
@@ -117,9 +120,9 @@ public class AppMain extends AppCompatActivity
         return true;
     }
 
-    public void replaceFragment(int id){
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.layoutparafragmentos, FooFragment.getFragment(id));
+    public void replaceFragment(Fragment frag, String tag){
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.layoutparafragmentos, frag, tag);
         ft.commit();
     }
 

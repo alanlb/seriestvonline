@@ -1,4 +1,4 @@
-package br.com.alanlb.seriestvonline;
+package br.com.alanlb.seriestvonline.controller;
 
 import android.content.Context;
 import android.view.View;
